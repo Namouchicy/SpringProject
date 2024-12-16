@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -33,13 +34,24 @@ public class Logement {
 	
 	@ElementCollection
 	private List<String> equipements;
-	@OneToOne
+	
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "disponibilite_id")
 	private Disponibilite disponibilite;
 	
 	@ManyToOne
 	@JoinColumn(name = "utilisateur_id")
 	private Utilisateur utilisateur;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	
 	
 
 }

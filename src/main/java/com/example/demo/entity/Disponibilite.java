@@ -25,4 +25,14 @@ public class Disponibilite {
 	
 	@OneToOne(mappedBy = "disponibilite")
 	private Logement logement;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	
 }
