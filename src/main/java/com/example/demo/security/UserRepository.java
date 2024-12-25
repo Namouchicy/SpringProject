@@ -1,12 +1,16 @@
-package com.example.demo.repository;
+package com.example.demo.security;
 
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.entity.Utilisateur;
+import java.util.Optional;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 @Repository
-public interface UtilisateurRepository extends JpaRepository <Utilisateur, Long>{
+public interface UserRepository extends JpaRepository<User, Long>{
 
+	Optional<User> findByEmail(String email);
+
+	
 }

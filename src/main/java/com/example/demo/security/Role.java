@@ -1,8 +1,8 @@
-package com.example.demo.entity;
+package com.example.demo.security;
 
 public enum Role {
 	PROPRIETAIRE,
 	COLOCATAIRE,
-	ADMINISTRATEUR
+	ADMINISTRATEUR, 
 
 }

@@ -1,5 +1,7 @@
 package com.example.demo.entity;
 
+import com.example.demo.security.User;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,7 +27,7 @@ public class PreferencesColocation {
 	
 	@ManyToOne
 	@JoinColumn(name = "utilisateur_id")
-	private Utilisateur utilisateur;
+	private User user;
 
 	public PreferencesColocation(Double budget, String typeLogement, String localisation) {
 		super();
@@ -34,12 +36,12 @@ public class PreferencesColocation {
 		this.localisation = localisation;
 	}
 
-	public PreferencesColocation(Double budget, String typeLogement, String localisation, Utilisateur utilisateur) {
+	public PreferencesColocation(Double budget, String typeLogement, String localisation, User user) {
 		super();
 		this.budget = budget;
 		this.typeLogement = typeLogement;
 		this.localisation = localisation;
-		this.utilisateur = utilisateur;
+		this.user = user;
 	}
 	
 	

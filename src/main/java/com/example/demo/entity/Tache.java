@@ -1,5 +1,7 @@
 package com.example.demo.entity;
 
+import com.example.demo.security.User;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

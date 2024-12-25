@@ -1,7 +1,8 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.Utilisateur;
-import com.example.demo.repository.UtilisateurRepository;
+import com.example.demo.security.User;
+import com.example.demo.security.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,43 +13,43 @@ import java.util.Optional;
 public class UtilisateurService {
 
     @Autowired
-    private UtilisateurRepository utilisateurRepository;
+    private UserRepository userRepository;
 
     // Create a new utilisateur
-    public Utilisateur createUtilisateur(Utilisateur utilisateur) {
-        return utilisateurRepository.save(utilisateur);
+    public User createUtilisateur(User user) {
+        return userRepository.save(user);
     }
 
     // Get all utilisateurs
-    public List<Utilisateur> getAllUtilisateurs() {
-        return utilisateurRepository.findAll();
+    public List<User> getAllUtilisateurs() {
+        return userRepository.findAll();
     }
 
     // Get utilisateur by ID
-    public Optional<Utilisateur> getUtilisateurById(Long id) {
-        return utilisateurRepository.findById(id);
+    public Optional<User> getUserById(Long id) {
+        return userRepository.findById(id);
     }
 
     // Update utilisateur
-    public Optional<Utilisateur> updateUtilisateur(Long id, Utilisateur utilisateurDetails) {
-        return utilisateurRepository.findById(id).map(utilisateur -> {
-            utilisateur.setNom(utilisateurDetails.getNom());
-            utilisateur.setPrenom(utilisateurDetails.getPrenom());
-            utilisateur.setEmail(utilisateurDetails.getEmail());
-            utilisateur.setTelephone(utilisateurDetails.getTelephone());
-            utilisateur.setMotDePasse(utilisateurDetails.getMotDePasse());
-            utilisateur.setRole(utilisateurDetails.getRole());
-            utilisateur.setAdresse(utilisateurDetails.getAdresse());
-            utilisateur.setBudget(utilisateurDetails.getBudget());
-            utilisateur.setPrefenrences(utilisateurDetails.getPrefenrences());
-            return utilisateurRepository.save(utilisateur);
+    public Optional<User> updateUser(Long id, User userDetails) {
+        return userRepository.findById(id).map(user -> {
+        	user.setNom(userDetails.getNom());
+        	user.setPrenom(userDetails.getPrenom());
+        	user.setEmail(userDetails.getEmail());
+        	user.setTelephone(userDetails.getTelephone());
+        	user.setMotDePasse(userDetails.getMotDePasse());
+        	user.setRole(userDetails.getRole());
+        	user.setAdresse(userDetails.getAdresse());
+        	user.setBudget(userDetails.getBudget());
+        	user.setPreferences(userDetails.getPreferences());
+            return userRepository.save(user);
         });
     }
 
     // Delete utilisateur
     public boolean deleteUtilisateur(Long id) {
-        if (utilisateurRepository.existsById(id)) {
-            utilisateurRepository.deleteById(id);
+        if (userRepository.existsById(id)) {
+        	userRepository.deleteById(id);
             return true;
         }
         return false;

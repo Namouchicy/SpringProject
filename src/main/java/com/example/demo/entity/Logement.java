@@ -2,6 +2,8 @@ package com.example.demo.entity;
 
 import java.util.List;
 
+import com.example.demo.security.User;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
@@ -41,7 +43,7 @@ public class Logement {
 	
 	@ManyToOne
 	@JoinColumn(name = "utilisateur_id")
-	private Utilisateur utilisateur;
+	private User utilisateur;
 
 	public Long getId() {
 		return id;

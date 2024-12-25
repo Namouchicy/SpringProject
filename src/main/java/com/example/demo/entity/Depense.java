@@ -2,6 +2,8 @@ package com.example.demo.entity;
 
 import java.util.List;
 
+import com.example.demo.security.User;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -35,6 +37,6 @@ public class Depense {
         joinColumns = @JoinColumn(name = "depense_id"),
         inverseJoinColumns = @JoinColumn(name = "utilisateur_id")
     )
-    private List<Utilisateur> payeurs;
+    private List<User> payeurs;
 
 }

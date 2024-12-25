@@ -2,6 +2,8 @@ package com.example.demo.entity;
 
 import java.util.List;
 
+import com.example.demo.security.User;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,7 +32,7 @@ public class Colocation {
 		        joinColumns = @JoinColumn(name = "colocation_id"),
 		        inverseJoinColumns = @JoinColumn(name = "utilisateur_id")
 		    )
-	private List<Utilisateur> colocataires;
+	private List<User> colocataires;
 	
 	@OneToMany(mappedBy = "colocation")
     private List<Tache> taches;

@@ -2,7 +2,7 @@
 //CONTROLLER
 package com.example.demo.controller;
 
-import com.example.demo.entity.Utilisateur;
+import com.example.demo.security.User;
 import com.example.demo.service.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,29 +20,29 @@ private UtilisateurService utilisateurService;
 
 // Create a new utilisateur
 @PostMapping
-public ResponseEntity<Utilisateur> createUtilisateur(@RequestBody Utilisateur utilisateur) {
-   Utilisateur createdUtilisateur = utilisateurService.createUtilisateur(utilisateur);
+public ResponseEntity<User> createUtilisateur(@RequestBody User utilisateur) {
+   User createdUtilisateur = utilisateurService.createUtilisateur(utilisateur);
    return ResponseEntity.ok(createdUtilisateur);
 }
 
 // Get all utilisateurs
 @GetMapping
-public ResponseEntity<List<Utilisateur>> getAllUtilisateurs() {
-   List<Utilisateur> utilisateurs = utilisateurService.getAllUtilisateurs();
+public ResponseEntity<List<User>> getAllUtilisateurs() {
+   List<User> utilisateurs = utilisateurService.getAllUtilisateurs();
    return ResponseEntity.ok(utilisateurs);
 }
 
 // Get utilisateur by ID
 @GetMapping("/{id}")
-public ResponseEntity<Utilisateur> getUtilisateurById(@PathVariable Long id) {
-   Optional<Utilisateur> utilisateur = utilisateurService.getUtilisateurById(id);
+public ResponseEntity<User> getUtilisateurById(@PathVariable Long id) {
+   Optional<User> utilisateur = utilisateurService.getUserById(id);
    return utilisateur.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
 }
 
 // Update utilisateur
 @PutMapping("/{id}")
-public ResponseEntity<Utilisateur> updateUtilisateur(@PathVariable Long id, @RequestBody Utilisateur utilisateurDetails) {
-   Optional<Utilisateur> updatedUtilisateur = utilisateurService.updateUtilisateur(id, utilisateurDetails);
+public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User UserDetails) {
+   Optional<User> updatedUtilisateur = utilisateurService.updateUser(id, UserDetails);
    return updatedUtilisateur.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
 }
 
